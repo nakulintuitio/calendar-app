@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { isLoggedIn } from "../features/auth/AuthSlice";
+import { isLoggedIn, login } from "../features/auth/AuthSlice";
 import styled from "styled-components";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const onFinish = (values) => {
     console.log("Received values:", values);
-    dispatch(isLoggedIn(true));
+    dispatch(login(values));
     navigate("/dashboard");
     // Add your login logic here
   };

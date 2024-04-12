@@ -1,36 +1,51 @@
 import { Table } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents, selectEvents } from "../features/Event/EventSlice";
 
 const MyEvents = () => {
+  const dispatch = useDispatch();
+  const events = useSelector(selectEvents);
+
+  useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
   const dataSource = [
     {
       key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
+      type: "Business",
+      description: "Event 1 Description",
+      title: "Event 1",
+      date: "2021-09-01",
     },
     {
       key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
+      type: "Personal",
+      description: "Event 2 Description",
+      title: "Event 2",
+      date: "2021-02-11",
     },
   ];
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Title",
+      dataIndex: "title",
       key: "name",
     },
     {
-      title: "Age",
-      dataIndex: "age",
+      title: "Description",
+      dataIndex: "description",
       key: "age",
     },
     {
-      title: "Address",
-      dataIndex: "address",
+      title: "Date",
+      dataIndex: "date",
+      key: "address",
+    },
+    {
+      title: "Type",
+      dataIndex: "type",
       key: "address",
     },
   ];
