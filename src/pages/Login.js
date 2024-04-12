@@ -11,6 +11,7 @@ const Login = () => {
   const onFinish = (values) => {
     console.log("Received values:", values);
     dispatch(login(values));
+    dispatch(isLoggedIn(true));
     navigate("/dashboard");
     // Add your login logic here
   };
